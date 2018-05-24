@@ -23,8 +23,13 @@
         <td><%= film.synopsis %></td>
         <td><%= image_tag film.picture %></td>
         <td><%= link_to 'Show', film %></td>
-        <td><%= link_to 'Edit', edit_film_path(film) %></td>
-        <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_film_path(film) %></td>
+        <% end %>
+      
+        <% if current_user %>
+          <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         
       </tr>
     <% end %>
